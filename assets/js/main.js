@@ -64,51 +64,101 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Form submission simulation
-  const SLS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPSOHWiHgpjLVk16ZTEbprpoVjxJnqbWqNu5dO1Kn0cz4MO01DU-SwE8WzE48053pL/exec';
+ // ================================
+// GOOGLE SHEETS FORM SUBMISSION
+// ================================
 
-  const form = document.getElementById('quoteForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+const SLS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPSOHWiHgpjLVk16ZTEbprpoVjxJnqbWqNu5dO1Kn0cz4MO01DU-SwE8WzE48053pL/exec";
 
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
+const form = document.getElementById("quoteForm");
+
+if (form) {
+
+  form.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+    // HTML5 Validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const submitBtn = form.querySelector(".btn-submit");
+    const errorBox = document.getElementById("formError");
+    const successBox = document.getElementById("formSuccess");
+
+    if (errorBox) errorBox.style.display = "none";
+    if (successBox) successBox.style.display = "none";
+
+    const originalText = submitBtn.innerHTML;
+
+    submitBtn.innerHTML = "Sending...";
+    submitBtn.disabled = true;
+
+    // Collect Form Data
+    const data = {
+      page: window.location.pathname.split("/").pop() || "index.html",
+
+      name: document.getElementById("name").value.trim(),
+      company: document.getElementById("company").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      city: document.getElementById("city").value.trim(),
+      service: document.getElementById("service").value,
+      origin: document.getElementById("origin").value.trim(),
+      destination: document.getElementById("destination").value.trim(),
+      cargoDescription: document.getElementById("cargoDescription").value.trim(),
+      weight: document.getElementById("weight").value.trim(),
+      dimensions: document.getElementById("dimensions").value.trim(),
+      additionalRequirements: document.getElementById("additionalRequirements").value.trim()
+    };
+
+    try {
+
+      const response = await fetch(SLS_SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+
+        form.reset();
+
+        form.style.display = "none";
+
+        if (successBox) {
+          successBox.style.display = "block";
+          successBox.scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+
+      } else {
+        throw new Error(result.message || "Submission Failed");
       }
 
-      const btn = form.querySelector('.btn-submit');
-      const errorBox = document.getElementById('formError');
-      const originalBtnText = btn.textContent;
+    } catch (err) {
 
-      if (errorBox) errorBox.style.display = 'none';
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
+      console.error(err);
 
-      const formData = new FormData(form);
-      formData.append('source', document.title);
-      formData.append('pageUrl', window.location.href);
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
 
-      fetch(SLS_SCRIPT_URL, { method: 'POST', body: formData })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.result === 'success') {
-            form.style.display = 'none';
-            if (errorBox) errorBox.style.display = 'none';
-            const success = document.getElementById('formSuccess');
-            if (success) success.style.display = 'block';
-          } else {
-            throw new Error('Unexpected response');
-          }
-        })
-        .catch(() => {
-          btn.textContent = originalBtnText;
-          btn.disabled = false;
-          if (errorBox) {
-            errorBox.style.display = 'flex';
-            errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
+      if (errorBox) {
+        errorBox.style.display = "flex";
+        errorBox.scrollIntoView({
+          behavior: "smooth"
         });
-    });
-  }
-});
+      }
+
+    }
+
+  });
+
+}
