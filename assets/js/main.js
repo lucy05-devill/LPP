@@ -65,18 +65,50 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Form submission simulation
+  const SLS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPSOHWiHgpjLVk16ZTEbprpoVjxJnqbWqNu5dO1Kn0cz4MO01DU-SwE8WzE48053pL/exec';
+
   const form = document.getElementById('quoteForm');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
       const btn = form.querySelector('.btn-submit');
+      const errorBox = document.getElementById('formError');
+      const originalBtnText = btn.textContent;
+
+      if (errorBox) errorBox.style.display = 'none';
       btn.textContent = 'Sending…';
       btn.disabled = true;
-      setTimeout(() => {
-        form.style.display = 'none';
-        const success = document.getElementById('formSuccess');
-        if (success) success.style.display = 'block';
-      }, 1200);
+
+      const formData = new FormData(form);
+      formData.append('source', document.title);
+      formData.append('pageUrl', window.location.href);
+
+      fetch(SLS_SCRIPT_URL, { method: 'POST', body: formData })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.result === 'success') {
+            form.style.display = 'none';
+            if (errorBox) errorBox.style.display = 'none';
+            const success = document.getElementById('formSuccess');
+            if (success) success.style.display = 'block';
+          } else {
+            throw new Error('Unexpected response');
+          }
+        })
+        .catch(() => {
+          btn.textContent = originalBtnText;
+          btn.disabled = false;
+          if (errorBox) {
+            errorBox.style.display = 'flex';
+            errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
     });
   }
 });
