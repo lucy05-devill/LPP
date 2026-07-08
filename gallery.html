@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Fleet & Operations | Shubham Logistic Services</title>
+  <meta name="description" content="60+ vehicle fleet, reefer containers, air suspension trucks, ODC movements, and port operations across India." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .gallery-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    }
+    @media(max-width:991px){ .gallery-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:575px){ .gallery-grid { grid-template-columns:1fr; } }
+    .gallery-item {
+      border-radius:12px; overflow:hidden;
+      position:relative; cursor:pointer;
+      aspect-ratio:4/3;
+    }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.35s; }
+    .gallery-item:hover img { transform:scale(1.06); }
+    .gallery-item:hover .gallery-overlay { opacity:1; }
+    .gallery-overlay {
+      position:absolute; inset:0; background:rgba(13,27,42,0.7);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      opacity:0; transition:opacity 0.25s; padding:16px; text-align:center;
+    }
+    .gallery-overlay i { font-size:1.8rem; color:var(--white); margin-bottom:8px; }
+    .gallery-overlay span { font-size:0.82rem; color:rgba(255,255,255,0.85); font-weight:500; }
+    /* Lightbox */
+    .lightbox-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:10000;
+      display:none; align-items:center; justify-content:center; padding:20px;
+    }
+    .lightbox-overlay.open { display:flex; }
+    .lightbox-inner { position:relative; max-width:860px; width:100%; text-align:center; }
+    .lightbox-inner img { max-width:100%; max-height:80vh; border-radius:10px; }
+    .lightbox-close {
+      position:absolute; top:-40px; right:0; background:none; border:none;
+      color:white; font-size:1.6rem; cursor:pointer;
+    }
+    .lightbox-caption { color:rgba(255,255,255,0.75); font-size:0.85rem; margin-top:12px; }
+  </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+</head>
+<body>
+
+<nav class="navbar navbar-sls navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/img/logo.png" alt="SLS Logo" class="brand-logo" onerror="this.style.display='none'" />
+      <div class="brand-text">
+        <span class="brand-name">Shubham Logistics</span>
+        <span class="brand-tagline">Pan-India Since 1994</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+        <li class="nav-item"><a class="nav-link" href="why-us.html">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="branches.html">Branches</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="contact.html">Get a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <nav aria-label="breadcrumb" class="breadcrumb-sls mb-3">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Gallery</li>
+      </ol>
+    </nav>
+    <h1>Our Fleet & Operations in Action</h1>
+    <p>A glimpse into the vehicles, cargo, and expertise behind 30 years of specialised logistics — from port corridors to project sites, across India.</p>
+  </div>
+</section>
+
+<section class="py-5" style="padding-top:80px!important;padding-bottom:80px!important;">
+  <div class="container">
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img2.jpg" alt="Fleet lineup on the tarmac beside the airport control tower" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Fleet Lineup — Airport Cargo Operations</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img4.jpg" alt="Truck positioned at the cargo hold of a freighter aircraft" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Air Cargo Loading — Aerospace</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img5.jpg" alt="Flatbed carrying a shrouded jet engine assembly" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Air Suspension — Aerospace Cargo</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img6.jpg" alt="Flatbed transporting a jet engine module" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Air Suspension — Engine Transport</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img7.jpg" alt="Multi-vehicle fleet convoy loaded and ready for dispatch" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Fleet Convoy — Project Cargo</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img8.jpg" alt="Decorated vehicle alongside a Maersk shipping container" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Container Transport — Maersk Cargo</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img9.jpg" alt="SLS-liveried fleet with containers at a port yard" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Fleet Lineup — Port Operations</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img10.jpg" alt="Multi-vehicle convoy carrying crated equipment" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Fleet Convoy — Heavy Cargo</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img11.jpg" alt="Flatbed transporting a jet engine module" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Air Suspension — Engine Transport</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img12.jpg" alt="Flatbed hauling oversized freight modules" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>ODC — Heavy Cargo Movement</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img13.jpg" alt="SLS carrier with container en route" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Container Transport — All India</span>
+        </div>
+      </div>
+
+      <div class="gallery-item fade-up">
+        <img src="assets/img/gallery/img14.jpg" alt="SLS vehicle alongside a reefer shipping container" loading="lazy" />
+        <div class="gallery-overlay">
+          <i class="fas fa-expand"></i>
+          <span>Port & Reefer Operations</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+      <div class="lightbox-inner">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fas fa-times"></i></button>
+        <img id="lightboxImg" src="" alt="" />
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <h2>Ready to Work With Us?</h2>
+        <p>30 years of experience, 60+ fleet vehicles, and pan-India coverage — ready to move your cargo.</p>
+        <a href="contact.html" class="btn-primary-sls">Request a Quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-main">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand-name">Shubham Logistic Services</div>
+        <div class="footer-tagline">Pan-India Since 1994</div>
+        <p class="footer-desc">India's trusted logistics partner for over 30 years. Container, ODC, reefer, air suspension and specialised cargo across every major trade corridor.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/919849169890" class="footer-social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:logistics.shubham@gmail.com" class="footer-social-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="industries.html"><i class="fas fa-chevron-right"></i> Industries</a></li>
+          <li><a href="why-us.html"><i class="fas fa-chevron-right"></i> Why Choose Us</a></li>
+          <li><a href="branches.html"><i class="fas fa-chevron-right"></i> Branches</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6 col-6">
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html#container"><i class="fas fa-chevron-right"></i> Container Transport</a></li>
+          <li><a href="services.html#odc"><i class="fas fa-chevron-right"></i> ODC Movement</a></li>
+          <li><a href="services.html#reefer"><i class="fas fa-chevron-right"></i> Reefer Transport</a></li>
+          <li><a href="services.html#air-suspension"><i class="fas fa-chevron-right"></i> Air Suspension</a></li>
+          <li><a href="services.html#white-glove"><i class="fas fa-chevron-right"></i> White Glove</a></li>
+          <li><a href="services.html#port"><i class="fas fa-chevron-right"></i> Port & ICD</a></li>
+          <li><a href="services.html#loading"><i class="fas fa-chevron-right"></i> Loading & Unloading</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contact Us</div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><div><a href="tel:+919849169890">+91 98491 69890</a><br/><a href="tel:+919701471539">+91 97014 71539</a></div></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:logistics.shubham@gmail.com">logistics.shubham@gmail.com</a><br/><a href="mailto:vinod@shubhamlogistic.com">vinod@shubhamlogistic.com</a></div></div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div style="color:rgba(255,255,255,0.6);">Flat 203, Moosapet, Hyderabad – 500018, Telangana</div></div>
+        <div class="footer-contact-item"><i class="fas fa-clock"></i><div style="color:rgba(255,255,255,0.6);">Mon – Sat, 9:00 AM – 6:00 PM IST</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="copyrightYear"></span> Shubham Logistic Services. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="wa-fab">
+  <div class="wa-popup" id="waPopup">
+    <div class="wa-popup-header">
+      <div class="wa-avatar"><i class="fab fa-whatsapp"></i></div>
+      <div>
+        <div class="wa-name">Shubham Logistics</div>
+        <div class="wa-status">Typically replies within minutes</div>
+      </div>
+      <button class="wa-close" id="waClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="wa-body">
+      <div class="wa-bubble">
+        👋 Hi! Welcome to <strong>Shubham Logistic Services</strong>.<br/>
+        Chat directly with our operations team:
+      </div>
+    </div>
+    <div class="wa-footer">
+      <a href="https://wa.me/919849169890?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20logistics%20services." class="wa-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <div class="wa-numbers">
+        <a href="https://wa.me/919849169890" class="wa-num-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Hyderabad
+        </a>
+        <a href="https://wa.me/919324644543" class="wa-num-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Mumbai
+        </a>
+        <a href="https://wa.me/917015625154" class="wa-num-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Delhi NCR
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wa-pulse"></div>
+  <button class="wa-main-btn" id="waMainBtn" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // Gallery lightbox — click any tile to view it enlarged
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const overlay = document.getElementById('lightboxOverlay');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const caption = item.querySelector('.gallery-overlay span').textContent;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = caption;
+      overlay.classList.add('open');
+    });
+  });
+
+  function closeLightbox() { overlay.classList.remove('open'); }
+  lightboxClose.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
