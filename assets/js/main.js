@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // GOOGLE SHEETS FORM SUBMISSION
 // ================================
 
-const SLS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPSOHWiHgpjLVk16ZTEbprpoVjxJnqbWqNu5dO1Kn0cz4MO01DU-SwE8WzE48053pL/exec";
+const SLS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPrIE_83HPbTxm3uiaF2AGgDkhSssNLOjsaSHg0RPhPCYX6-0J9z72jW7wF0tAABaN/exec";
 
 const form = document.getElementById("quoteForm");
 
