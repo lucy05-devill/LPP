@@ -114,27 +114,27 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Full Name *</label>
-                <input type="text" class="form-control" placeholder="Your full name" required />
+                <input type="text" class="form-control" placeholder="Your full name" name="name" required />
               </div>
               <div class="col-md-6">
-                <label class="form-label">Company Name *</label>
-                <input type="text" class="form-control" placeholder="Your company" required />
+                <label class="form-label">Company Name</label>
+                <input type="text" class="form-control" placeholder="Your company" name="company" />
               </div>
               <div class="col-md-6">
                 <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" placeholder="you@company.com" required />
+                <input type="email" class="form-control" placeholder="you@company.com" name="email" required />
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number *</label>
-                <input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX" required />
+                <input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX" name="phone" required />
               </div>
               <div class="col-md-6">
-                <label class="form-label">City / Location *</label>
-                <input type="text" class="form-control" placeholder="Your city" required />
+                <label class="form-label">City / Location</label>
+                <input type="text" class="form-control" placeholder="Your city" name="city" />
               </div>
               <div class="col-md-6">
-                <label class="form-label">Service Required *</label>
-                <select class="form-select" required>
+                <label class="form-label">Service Required</label>
+                <select class="form-select" name="service">
                   <option value="">Select a service</option>
                   <option>Container Transport</option>
                   <option>ODC Movement</option>
@@ -147,28 +147,28 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Origin (Pickup Location) *</label>
-                <input type="text" class="form-control" placeholder="e.g. JNPT Mumbai / Hyderabad" required />
+                <label class="form-label">Origin (Pickup Location)</label>
+                <input type="text" class="form-control" placeholder="e.g. JNPT Mumbai / Hyderabad" name="origin" />
               </div>
               <div class="col-md-6">
-                <label class="form-label">Destination *</label>
-                <input type="text" class="form-control" placeholder="e.g. Bangalore / Chennai Port" required />
+                <label class="form-label">Destination</label>
+                <input type="text" class="form-control" placeholder="e.g. Bangalore / Chennai Port" name="destination" />
               </div>
               <div class="col-12">
                 <label class="form-label">Cargo Description</label>
-                <textarea class="form-control" rows="3" placeholder="Describe your cargo — type, special requirements, fragility, temperature needs…"></textarea>
+                <textarea class="form-control" rows="3" placeholder="Describe your cargo — type, special requirements, fragility, temperature needs…" name="cargo"></textarea>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Approximate Weight</label>
-                <input type="text" class="form-control" placeholder="e.g. 5 MT, 20 tonnes" />
+                <input type="text" class="form-control" placeholder="e.g. 5 MT, 20 tonnes" name="weight" />
               </div>
               <div class="col-md-6">
                 <label class="form-label">Approximate Dimensions</label>
-                <input type="text" class="form-control" placeholder="e.g. 12m × 3m × 3m" />
+                <input type="text" class="form-control" placeholder="e.g. 12m × 3m × 3m" name="dimensions" />
               </div>
               <div class="col-12">
                 <label class="form-label">Additional Requirements</label>
-                <textarea class="form-control" rows="3" placeholder="Timeline, special instructions, packaging notes, escort requirements…"></textarea>
+                <textarea class="form-control" rows="3" placeholder="Timeline, special instructions, packaging notes, escort requirements…" name="additional"></textarea>
               </div>
               <div class="col-12">
                 <div style="background:var(--light);border-radius:8px;padding:14px 18px;margin-bottom:4px;font-size:0.82rem;color:var(--gray);display:flex;gap:10px;align-items:flex-start;">
@@ -178,6 +178,10 @@
               </div>
               <div class="col-12">
                 <button type="submit" class="btn-submit">Send Enquiry →</button>
+                <div class="form-error" id="formError" style="display:none;margin-top:14px;background:#FDECEC;border:1px solid #E57373;border-radius:8px;padding:14px 18px;font-size:0.85rem;color:#B91C1C;align-items:flex-start;gap:10px;">
+                  <i class="fas fa-triangle-exclamation" style="margin-top:2px;flex-shrink:0;"></i>
+                  <span>Something went wrong sending your enquiry. Please try again, or reach us directly at <a href="tel:+919849169890" style="color:#B91C1C;font-weight:600;">+91 98491 69890</a> or on <a href="https://wa.me/919849169890" style="color:#B91C1C;font-weight:600;">WhatsApp</a>.</span>
+                </div>
               </div>
             </div>
           </form>
